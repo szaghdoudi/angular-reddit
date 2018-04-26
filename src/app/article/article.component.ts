@@ -9,23 +9,35 @@ import { Article } from './article.model';
 export class ArticleComponent implements OnInit {
 
   @HostBinding('attr.class') cssClass = 'row';
-  article : Article;
+  article: Article;
+  
 
 
   constructor() {
 
-    this.article = new Article('Angular 5','http://angular.io',10);
+    this.article = new Article('Angular 5', 'http://angular.io', 10);
+
    
+
   }
 
   voteUp() {
-    this.article.votes += 1;
+    this.article.voteUp();
     return false;
   }
 
   voteDown() {
-    this.article.votes -= 1;
+    this.article.voteDown();
     return false;
+  }
+
+  domain(): string {
+    try {
+      const domainAndPath: string = this.article.link.split('//')[1];
+      return domainAndPath.split('/')[0];
+    } catch (error) {
+      return null;
+    }
   }
 
   ngOnInit() {
