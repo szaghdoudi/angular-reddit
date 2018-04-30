@@ -11,10 +11,19 @@ export class Article {
 
 
     voteUp(){
-        this.votes +=1
+        this.votes +=1;
     }
 
     voteDown(){
         this.votes -=1;
     }
+
+    domain(): string {
+        try {
+          const domainAndPath: string = this.link.split('//')[1];
+          return domainAndPath.split('/')[0];
+        } catch (error) {
+          return null;
+        }
+      }
 }

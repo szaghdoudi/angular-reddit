@@ -12,8 +12,10 @@
   </div>
 
 
-  <button (click)="AddArticle(newTitle,newLink)" class="ui positive right floated button">Submit link</button> 
+  <button (click)="addArticle(newTitle,newLink)" class="ui positive right floated button">Submit link</button> 
 </form>
 <div class="ui grid posts">
-<app-article></app-article>
+
+  
+<app-article *ngFor="let article of sortedArticles()" [article]="article"></app-article>
 </div>
